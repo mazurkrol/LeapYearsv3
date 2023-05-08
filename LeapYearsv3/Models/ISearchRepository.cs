@@ -1,7 +1,8 @@
 ﻿namespace LeapYearsv3.Models
 {
-	public class ISearchRepository
+	public interface ISearchRepository
 	{
 		IEnumerable<Search> SearchList { get;}
+		void AddSearch(Search search);
 	}
 }

@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LeapYearsv3.Data;
+using LeapYearsv3.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("LeapYearsv3ContextConnection") ?? throw new InvalidOperationException("Connection string 'LeapYearsv3ContextConnection' not found.");
-
+builder.Services.AddScoped<ISearchRepository, SearchRepository>();
+builder.Services.AddDbContext<LeapYearsDbContext>(options =>
+	options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<LeapYearsv3Context>(options =>
     options.UseSqlServer(connectionString));
 
