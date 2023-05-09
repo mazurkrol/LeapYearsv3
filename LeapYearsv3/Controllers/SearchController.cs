@@ -2,6 +2,5 @@
 {
 	public class SearchController
 	{
-		private readonly ISearchRepository;
 	}
 }
