@@ -6,6 +6,10 @@ namespace LeapYearsv3.Models
 	{
 		private readonly LeapYearsDbContext _leapYearsDbContext;
 		
+		public SearchRepository(LeapYearsDbContext leapYearsDbContext)
+		{
+			_leapYearsDbContext = leapYearsDbContext;
+		}
 		public IEnumerable<Search> SearchList 
 		{
 			get
@@ -17,6 +21,7 @@ namespace LeapYearsv3.Models
 		{
 			//var newSearch = new Search(search.SearchId, search.Name, search.Year, search.SearchDate, search.UserNumber);
 			_leapYearsDbContext.Searches.Add(search);
+			_leapYearsDbContext.SaveChanges();
 		}
 	}
 }
