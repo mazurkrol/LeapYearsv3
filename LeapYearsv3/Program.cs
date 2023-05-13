@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LeapYearsv3.Data;
 using LeapYearsv3.Models;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("LeapYearsv3ContextConnection") ?? throw new InvalidOperationException("Connection string 'LeapYearsv3ContextConnection' not found.");
@@ -19,7 +20,7 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<LeapYearsv3Context>();
-
+builder.Services.AddHttpContextAccessor();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
