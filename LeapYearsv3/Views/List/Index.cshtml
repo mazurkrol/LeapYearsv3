@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Search>
+@foreach(Search search in @Model)
+{
+	<p>
+		@search.IsLeapList()
+	</p>
+	<br/>
+}

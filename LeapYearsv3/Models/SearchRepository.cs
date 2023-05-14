@@ -14,7 +14,7 @@ namespace LeapYearsv3.Models
 		{
 			get
 			{
-				return _leapYearsDbContext.Searches.Include(search => search.UserNumber);
+				return _leapYearsDbContext.Searches;
 			}
 		}
 		public void AddSearch(Search search)

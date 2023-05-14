@@ -53,6 +53,22 @@ namespace LeapYearsv3.Models
             else
                 return sentence+="nieprzestepny";
 			}
+			
+			public string IsLeapList()
+			{
+			string sentence = SearchDate+"  "+Name+" "+Year+" ";
+			if (Year%100==0 && Year%400!=0)
+				sentence+="nieprzestepny ";
+			else
+			if (Year%4==0)
+				sentence+="przestepny ";
+			else
+				sentence+="nieprzestepny ";
+
+			if (UserNumber!=null && UserName!=null)
+				sentence+=UserNumber+" "+UserName;
+			return sentence;
+		}
 		}
 	
 }

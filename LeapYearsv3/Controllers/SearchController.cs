@@ -22,5 +22,10 @@ namespace LeapYearsv3.Controllers
             _searchRepository.AddSearch(search);
             return View("Views/Home/Index.cshtml", search);
         }
+
+        public IActionResult GetList()
+        {
+            return View("Views/List/Index.cshtml", _searchRepository.SearchList);
+        }
     }
 }
