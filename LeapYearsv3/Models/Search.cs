@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LeapYearsv3.Models
 {
@@ -53,7 +54,17 @@ namespace LeapYearsv3.Models
             else
                 return sentence+="nieprzestepny";
 			}
-			
+			public string IsLeapShort()
+			{
+            if (Year%100==0 && Year%400!=0)
+                return "nieprzestepny";
+            else
+            if (Year%4==0)
+                return "przestepny";
+            else
+                return "nieprzestepny";
+        
+			}
 			public string IsLeapList()
 			{
 			string sentence = SearchDate+"  "+Name+" "+Year+" ";

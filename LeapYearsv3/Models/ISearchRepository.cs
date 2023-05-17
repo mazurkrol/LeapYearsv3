@@ -4,5 +4,7 @@
 	{
 		IEnumerable<Search> SearchList { get;}
 		void AddSearch(Search search);
-	}
+		void DeleteSearch(int SearchId);
+
+    }
 }

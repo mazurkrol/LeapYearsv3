@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LeapYearsv3.Models
 {
@@ -23,5 +24,22 @@ namespace LeapYearsv3.Models
 			_leapYearsDbContext.Searches.Add(search);
 			_leapYearsDbContext.SaveChanges();
 		}
-	}
+
+        public void DeleteSearch(int SearchId)
+        {
+            var _search = _leapYearsDbContext.Searches.Find(SearchId);
+            if (_search != null)
+            {
+                _search.SearchId = SearchId; // Set a permanent value for SearchId
+                _leapYearsDbContext.Searches.Remove(_search);
+                _leapYearsDbContext.SaveChanges();
+            }
+			else
+			{
+				throw new InvalidOperationException();
+			}
+            //_leapYearsDbContext.Searches.Remove(search);
+            //_leapYearsDbContext.SaveChanges();
+        }
+    }
 }
